@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+Login
+{% endblock title %}
+
+{% block stylecss %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock stylecss %}
+
+{% block body %}
+{%load static%}
+
+    <div class="container">
+
+      <div class="section-title">
+        <h3 class="text-white bg-dark text-center p-3">My Recent Projects </h3>
+        </div>
+
+
+      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
+{% for post in posts %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+
+          <div class="portfolio-wrap">
+            <img src="{{post.img.url}}" class="img-fluid" alt="no-image">
+            <div class="portfolio-links">
+              {% comment %} <a href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a> {% endcomment %}
+              <a href="{{post.link}}" title="More Details"></a>
+            </div>
+            <br>
+              <h4 class="title"><i class="bx bxl-github"></i><a href="{{post.link}}" target="_blank">{{post.title}}</a></h4>
+              <p class="description">{{post.description}}</p>
+          
+            
+          </div>
+        </div>
+{% endfor %}
+
+      </div>
+    
+
+    </div>
+
+{% endblock body %}
